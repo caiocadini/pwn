@@ -1,2 +1,36 @@
 # pwn
 Prática sobre pwn referente à matéria de Segurança Cibernética
+Resolução do exercício do site [Hack The Box](https://app.hackthebox.com/challenges/restaurant)
+
+### Descrição do problema
+Bem-vindo ao nosso restaurante. Aqui você pode comer e beber o quanto quiser! Só não exagere...
+
+### Analisando o problema
+Descompactando o arquivo .zip, resulta em 2 arquivos: um arquivo de biblioteca libc e um arquivo binário.
+
+# Imagem foda
+
+Vamos verificar o tipo binário e suas proteções.
+
+# Imagem foda (64 bit binary file, dynamically linked, not stripped.)
+# Imagem foda (VULN -> No Canary Found, No PIE (ASLR disabled))
+
+Dado um arquivo de biblioteca libc com a vulnerabilidade que obtivemos do arquivo binário, sabemos que a exploração que faremos é o ataque ret2libc. Agora vamos descompilar o binário.
+
+# Imagem foda
+
+Analisando a função principal, se a entrada do usuário for 1, o usuário deverá pular para a função fill() e se a entrada for 2, o usuário deverá pular para a função drink(). Vamos verificar fill() primeiro.
+
+# Imagem foda
+
+Observe que podemos vazar o endereço de tempo de execução da libc por meio da chamada puts. Também podemos estourar o buffer da variável local_28 para controlar o RIP. Vamos verificar a função drink() agora.
+
+# Imagem foda 
+
+Nada de interessante aqui, parece que a função fill() será de nosso interesse agora.
+
+### Vazando o endereço de tempo de execução libc
+
+#### Obtenha o deslocamento RIP
+
+
