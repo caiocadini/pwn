@@ -18,7 +18,7 @@ Vamos verificar o tipo binário e suas proteções.
 
 Dado um arquivo de biblioteca libc com a vulnerabilidade que obtivemos do arquivo binário, sabemos que a exploração que faremos é o ataque ret2libc. Agora vamos descompilar o binário.
 
-![função main](https://github.com/caiocadini/pwn/assets/100872066/afa0fe88-66e2-4d79-bc03-ca466a5d2676)
+![função main do binário](https://github.com/caiocadini/pwn/assets/100872066/afa0fe88-66e2-4d79-bc03-ca466a5d2676 "Função main")
 
 
 Analisando a função principal, se a entrada do usuário for 1, o usuário deverá pular para a função fill() e se a entrada for 2, o usuário deverá pular para a função drink(). Vamos verificar fill() primeiro.
