@@ -23,11 +23,13 @@ Dado um arquivo de biblioteca libc com a vulnerabilidade que obtivemos do arquiv
 
 Analisando a função principal, se a entrada do usuário for 1, o usuário deverá pular para a função fill() e se a entrada for 2, o usuário deverá pular para a função drink(). Vamos verificar fill() primeiro.
 
-# Imagem foda
+![função fill do binário](https://github.com/caiocadini/pwn/assets/100872066/cd33ee9a-5926-4596-9d82-a3b56f1580e1 "Função fill")
+
 
 Observe que podemos vazar o endereço de tempo de execução da libc por meio da chamada puts. Também podemos estourar o buffer da variável local_28 para controlar o RIP. Vamos verificar a função drink() agora.
 
-# Imagem foda 
+![função drink do binário](https://github.com/caiocadini/pwn/assets/100872066/622371a3-4739-4fd6-ad0e-3a4dc2ce72fc "Função drink")
+
 
 Nada de interessante aqui, parece que a função fill() será de nosso interesse agora.
 
