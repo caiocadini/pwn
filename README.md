@@ -2,10 +2,10 @@
 Prática sobre pwn referente à matéria de Segurança Cibernética
 Resolução do exercício do site [Hack The Box](https://app.hackthebox.com/challenges/restaurant)
 
-### Descrição do problema
+## Descrição do problema
 Bem-vindo ao nosso restaurante. Aqui você pode comer e beber o quanto quiser! Só não exagere...
 
-### Analisando o problema
+## Analisando o problema
 Descompactando o arquivo .zip, resulta em 2 arquivos: um arquivo de biblioteca libc e um arquivo binário.
 
 # Imagem foda
@@ -29,7 +29,7 @@ Observe que podemos vazar o endereço de tempo de execução da libc por meio da
 
 Nada de interessante aqui, parece que a função fill() será de nosso interesse agora.
 
-### Vazando o endereço de tempo de execução libc
+## Vazando o endereço de tempo de execução libc
 
 #### Obtenha o deslocamento RIP
 
