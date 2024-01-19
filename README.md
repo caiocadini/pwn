@@ -9,14 +9,20 @@ Bem-vindo ao nosso restaurante. Aqui você pode comer e beber o quanto quiser! S
 ## Analisando o problema
 Descompactando o arquivo .zip, resulta em 2 arquivos: um arquivo de biblioteca libc e um arquivo binário.
 
-# Imagem foda
+![image](https://github.com/caiocadini/pwn/assets/100872066/8251a5e2-8a68-49e8-93a1-1a266c184bc0)
 
 Vamos verificar o tipo binário e suas proteções.
 
-# Imagem foda (64 bit binary file, dynamically linked, not stripped.)
-# Imagem foda (VULN -> No Canary Found, No PIE (ASLR disabled))
+![image](https://github.com/caiocadini/pwn/assets/100872066/aa470b42-aaef-4d31-a8a3-e2fedff9ab6e "Arquivo binário de 64 bits, vinculado dinamicamente, não removido.")
 
-Dado um arquivo de biblioteca libc com a vulnerabilidade que obtivemos do arquivo binário, sabemos que a exploração que faremos é o ataque ret2libc. Agora vamos descompilar o binário.
+![image](https://github.com/caiocadini/pwn/assets/100872066/ba76af3c-a1c8-4d19-807b-7aecf99fe7f8 "Nenhum Canário Encontrado, Sem PIE (ASLR desabilitado)")
+
+Utilizando o pwn checksec, que verifica as configurações de segurança de um arquivo ELF, podemos observar 'No canary found'. Stack canaries são usados para detectar e prevenir buffer overflow. 'No canary found' significa que essa proteção não está presente, tornando o binário mais suscetível a ataques de buffer overflow no stack.
+
+Além disso, o PIE (Position Independent Executable) não está habilitado, significando que o binário é sempre carregado no mesmo endereço de memória cada vez que é executado.
+
+Somando o fato de possuirmos o arquivo da libc, o ataque será um ataque ret2libc, que consiste em um buffer overflow em que o endereço de retorno da função chamada na pilha é substituído pelo endereço de uma outra instrução, e uma parte da pilha é sobrescrita para fornecer argumentos para está função. Apontando o retorno para a libc, podemos utilizar as funções dela para executar alguma chamada.
+
 
 ![função main do binário](https://github.com/caiocadini/pwn/assets/100872066/afa0fe88-66e2-4d79-bc03-ca466a5d2676 "Função main")
 
