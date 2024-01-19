@@ -35,6 +35,6 @@ Nada de interessante aqui, parece que a função fill() será de nosso interesse
 
 ## Vazando o endereço de tempo de execução libc
 
-#### Obtenha o deslocamento RIP
+### Obtenha o deslocamento RIP
 
 
